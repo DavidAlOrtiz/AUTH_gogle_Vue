@@ -1,10 +1,41 @@
 <template>
-  <nav>
-    <router-link to="/">Home</router-link> |
-    <router-link to="/about">About</router-link>
-  </nav>
+  <Cargando v-if="loading" />
+  <div v-else>
+    <Navar></Navar>
+    <div class="container">
+      <router-link to="/">Home</router-link> 
+    </div>
+  </div>
+
   <router-view/>
 </template>
+
+
+<script>
+import Navar from './components/Navbar.vue'
+import Cargando from './components/Cargando.vue'
+import {firebase} from './firebase'
+import { ref } from '@vue/reactivity'
+import { onMounted } from '@vue/runtime-core'
+export default {
+  components:{
+    Navar,
+    Cargando
+  },
+  setup(){
+    const loading = ref(false)
+
+    onMounted(async () =>{
+      loading.value = true
+      await firebase.getCurrentUser()
+      loading.value = false
+    })
+
+    return {loading}
+  }
+}
+</script>
+
 
 <style>
 #app {
