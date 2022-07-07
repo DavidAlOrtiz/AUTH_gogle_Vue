@@ -6,7 +6,16 @@
         </router-link>
         <div>
             <div class="btn btn-primary" @click="sinIng" v-if="!isAuthenticated">Acceder</div>
-            <div class="btn btn-danger" @click="signOut" v-else>Salir</div>
+            <div v-else>
+              <router-link to="/crud" class="btn btn-primary mx-1">
+                Crud
+              </router-link>
+              <router-link to="/perfil" class="btn btn-primary mx-1">
+                Perfil
+              </router-link>
+               <div class="btn btn-danger mx-1" @click="signOut" >Salir</div>
+            </div>
+            
         </div>
     </div>
   </nav>

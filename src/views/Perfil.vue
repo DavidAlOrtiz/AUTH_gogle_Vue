@@ -1,7 +1,7 @@
 <template>
   <div v-if="isAuthenticated">
     <h1>Perfil</h1>
-      <pre>
+      <pre >
         {{user}}
       </pre>
   </div>
